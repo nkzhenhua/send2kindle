@@ -1,0 +1,142 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "grunt jassmine test Current File",
+            "program": "${workspaceRoot}/node_modules/jasmine-node/lib/jasmine-node/cli.js",
+            "args": [
+                "${file}"
+            ],
+            "cwd": "${workspaceRoot}",
+            "preLaunchTask": null,
+            "runtimeExecutable": null,
+            "runtimeArgs": [
+                "--nolazy"
+            ],
+            "env": {
+                "NODE_ENV": "development"
+            },
+            "protocol": "inspector",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "stopOnEntry": false
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "grunt jassmine local-integration-test Current File",
+            //"program": "${workspaceFolder}/node_modules/.bin/grunt",
+            "program": "${workspaceRoot}/node_modules/jasmine-node/lib/jasmine-node/cli.js",
+            "args": [
+                "${file}"
+                //"integration-test-local:patchUsersMeNative",
+            ],
+            "cwd": "${workspaceRoot}",
+            "preLaunchTask": null,
+            "runtimeExecutable": null,
+            "runtimeArgs": [
+                "--nolazy"
+            ],
+            "env": {
+                "NODE_ENV": "local-integration"
+            },
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "protocol": "inspector",
+        },
+        {
+            "type": "node",
+            "request": "attach",
+            "name": "Attach to Process",
+            "port": 5858
+        },
+        {
+            "name": "Run with ts-node",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/server.ts",
+            "preLaunchTask": "tsc: build - tsconfig.json",
+            "outFiles": [
+                "${workspaceFolder}/dist/**/*.js"
+            ],
+            "runtimeArgs": [
+                "--nolazy",
+                "-r",
+                "ts-node/register"
+            ],
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "NODE_ENV": "development",
+            },
+            "protocol": "inspector",
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Jest All",
+            "program": "${workspaceFolder}/node_modules/.bin/jest",
+            "args": [
+                "--runInBand"
+            ],
+            "outFiles": [
+                "${workspaceFolder}/dist/**/*.js"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "disableOptimisticBPs": true,
+            "windows": {
+                "program": "${workspaceFolder}/node_modules/jest/bin/jest",
+            }
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Jest Current File",
+            "program": "${workspaceFolder}/node_modules/.bin/jest",
+            "args": [
+                "${fileBasenameNoExtension}",
+                "--config",
+                "jest.config.js",
+                "--coverage",
+                "false"
+            ],
+            "outFiles": [
+                "${workspaceFolder}/dist/**/*.js"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "disableOptimisticBPs": true,
+            "windows": {
+                "program": "${workspaceFolder}/node_modules/jest/bin/jest",
+            },
+            "env": {
+                "NODE_ENV": "development"
+            },
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Jest integration",
+            "program": "${workspaceFolder}/node_modules/.bin/jest",
+            "args": [
+                "test/integration/routes/admin.spec.ts",
+                "--config",
+                "jest.integration.config.js",
+                "--coverage",
+                "false"
+            ],
+            "outFiles": [
+                "${workspaceFolder}/dist/**/*.js"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "disableOptimisticBPs": true,
+            "env": {
+                "NODE_ENV": "integration",
+                "DEBUG": "nock.scope",
+            },
+        }
+    ]
+}

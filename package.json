@@ -1,0 +1,24 @@
+{
+  "name": "send2kindle",
+  "version": "1.0.0",
+  "description": "send a webpage to kindle through a web link",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nkzhenhua/send2kindle.git"
+  },
+  "keywords": [
+    "send",
+    "to",
+    "kindle"
+  ],
+  "author": "nkzhenhua",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nkzhenhua/send2kindle/issues"
+  },
+  "homepage": "https://github.com/nkzhenhua/send2kindle#readme"
+}
