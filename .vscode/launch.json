@@ -2,6 +2,17 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Run with node",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/server.js",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "NODE_ENV": "development",
+            },
+            "protocol": "inspector",
+        },
+        {
             "type": "node",
             "request": "launch",
             "name": "grunt jassmine test Current File",
@@ -22,29 +33,6 @@
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
             "stopOnEntry": false
-        },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "grunt jassmine local-integration-test Current File",
-            //"program": "${workspaceFolder}/node_modules/.bin/grunt",
-            "program": "${workspaceRoot}/node_modules/jasmine-node/lib/jasmine-node/cli.js",
-            "args": [
-                "${file}"
-                //"integration-test-local:patchUsersMeNative",
-            ],
-            "cwd": "${workspaceRoot}",
-            "preLaunchTask": null,
-            "runtimeExecutable": null,
-            "runtimeArgs": [
-                "--nolazy"
-            ],
-            "env": {
-                "NODE_ENV": "local-integration"
-            },
-            "console": "integratedTerminal",
-            "internalConsoleOptions": "neverOpen",
-            "protocol": "inspector",
         },
         {
             "type": "node",
