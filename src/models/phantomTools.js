@@ -1,5 +1,10 @@
 var phantom = require('phantom');
 
+/**
+ * Convert a webpage into pdf file with phantom
+ * @param {string} url the webpage url
+ * @param {string} filename the pdf file path/name save to
+ */
 async function createPDFfromUrl(url, filename) {
     const instance = await phantom.create();
     const page = await instance.createPage();

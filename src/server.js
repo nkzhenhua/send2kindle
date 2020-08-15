@@ -9,6 +9,6 @@ app.use(bodyParser.json());
 
 var page = require('./routes/page.js');
 app.use(page)
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8081;
 app.listen(port);
 console.log('Node + Express REST API skeleton server started on port: ' + port);
