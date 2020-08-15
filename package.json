@@ -4,7 +4,8 @@
   "description": "send a webpage to kindle through a web link",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --config ./jest.config.js",
+    "start": "node ./src/server.js"
   },
   "repository": {
     "type": "git",
@@ -23,10 +24,19 @@
   "homepage": "https://github.com/nkzhenhua/send2kindle#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "ebook-convert": "^2.0.1",
     "express": "^4.17.1",
     "fs-extra": "^9.0.1",
+    "html-to-mobi": "^0.2.0",
+    "node-readability": "^3.0.0",
+    "nodemailer": "^6.4.10",
+    "phantom": "^6.3.0",
+    "readability-nodejs": "0.0.2",
     "sha1": "^1.1.1",
-    "website-scraper": "^4.2.1",
-    "website-scraper-puppeteer": "^0.1.5"
+    "underscore": "^1.10.2",
+    "when": "^3.7.8"
+  },
+  "devDependencies": {
+    "jest": "^26.1.0"
   }
 }
