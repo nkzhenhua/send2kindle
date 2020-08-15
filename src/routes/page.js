@@ -5,5 +5,6 @@ var pageController = require('../controllers/pageController')
 
 // Home page route.
 router.post('/sendToKindle', pageController.sendLinkToKindle)
+router.get('/', pageController.home)
 
 module.exports = router;

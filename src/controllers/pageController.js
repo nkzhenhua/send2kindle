@@ -29,6 +29,11 @@ async function sendLinkToKindle(req, res) {
     await fs.remove(pdfFileName);
 };
 
+async function home(req, res) {
+    res.send("welcome to send2kindle!")
+};
+
 module.exports = {
-    sendLinkToKindle
+    sendLinkToKindle,
+    home
 }
