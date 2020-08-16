@@ -15,7 +15,8 @@ const exec = util.promisify(require('child_process').exec);
  */
 async function sendEmailToKindle(filename, toAddr, fromAddr) {
     console.log('Starting to send email!');
-    sendMailCommand = util.format('echo "send2kindle" | mailx -s "Convert" -r "%s" -a %s "%s"', fromAddr, filename, toAddr);
+    const sendMailCommand = util.format('echo "send2kindle" | mailx -s "Convert" -r "%s" -a %s "%s"', fromAddr, filename, toAddr);
+    console.log('sendmail command: '+sendMailCommand);
     const { stdout, stderr } = await exec(sendMailCommand);
     console.log('stdout:', stdout);
     console.log('stderr:', stderr);
