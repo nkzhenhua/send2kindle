@@ -3,7 +3,7 @@ const fs = require('fs-extra');
 const pdf_table_extractor = require('pdf-table-extractor');
 const when = require('when');
 const _ = require('lodash');
-const { upsertEtfData } = require('../db/artETFMySQL');
+const {upsertEtfData} = require('../db/artETFMySQL');
 
 /**
  * convert the pdf_table_extractor to async function
@@ -24,7 +24,8 @@ async function loadAllFiles(arkEtfFundUrlMap) {
     const pdfFiles = [];
     for (const [etfName, pdfFileURL] of Object.entries(arkEtfFundUrlMap)) {
         console.log(etfName, pdfFileURL);
-        const pdfFileName = './' + etfName + '.pdf';
+        const cur = new Date(Date.now());
+        const pdfFileName = './' + cur.getFullYear() + '-' + cur.getMonth() + '-' + cur.getDay() + '/' + etfName + '.pdf';
         await downloadPDF(pdfFileURL, pdfFileName);
         const pdfTable = await asyncPdfTableExtractor(pdfFileName);
         const result = parseTableData(etfName, pdfTable);
@@ -33,6 +34,7 @@ async function loadAllFiles(arkEtfFundUrlMap) {
         console.log(result);
     }
     return pdfFiles;
+
 }
 
 /**
