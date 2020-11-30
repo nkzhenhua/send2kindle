@@ -10,7 +10,7 @@ const arkEtfFundUrlMap = {
 
 async function loadArkFundsFiles(req, res){
     try{
-        await loadAllFiles(arkEtfFundUrlMap, '.');
+        await loadAllFiles(arkEtfFundUrlMap, './data');
         res.status(200);
         res.send('load succeed!');
     }catch(err){
