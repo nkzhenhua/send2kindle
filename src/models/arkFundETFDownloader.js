@@ -26,10 +26,11 @@ async function loadAllFiles(arkEtfFundUrlMap, dir) {
         console.log(etfName, pdfFileURL);
         const cur = new Date(Date.now());
         const dateStr = cur.getFullYear() + '-' + cur.getMonth() + '-' + cur.getDay();
-        if (!fs.existsSync(dateStr)){
-            fs.mkdirSync(dateStr);
+        const dirPath = dir + '/' + dateStr;
+        if (! fs.existsSync(dirPath)) {
+            fs.mkdirSync(dirPath);
         }
-        const pdfFileName = dir +'/' + dateStr + '/' + etfName + '.pdf';
+        const pdfFileName = dirPath + '/' + etfName + '.pdf';
         await downloadPDF(pdfFileURL, pdfFileName);
         const pdfTable = await asyncPdfTableExtractor(pdfFileName);
         const result = parseTableData(etfName, pdfTable);
