@@ -9,6 +9,12 @@ const arkEtfFundUrlMap = {
 }
 
 async function main(args){
+    console.log({
+        event: 'arkFundLoader',
+        timestamp: new Date().toISOString(),
+        msg: 'start a new download',
+        args
+    });
     await loadAllFiles(arkEtfFundUrlMap, args[0]);
 }
 
