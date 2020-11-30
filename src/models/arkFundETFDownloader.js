@@ -20,7 +20,7 @@ async function asyncPdfTableExtractor(pdfFileName) {
     });
 }
 
-async function loadAllFiles(arkEtfFundUrlMap) {
+async function loadAllFiles(arkEtfFundUrlMap, dir) {
     const pdfFiles = [];
     for (const [etfName, pdfFileURL] of Object.entries(arkEtfFundUrlMap)) {
         console.log(etfName, pdfFileURL);
@@ -29,7 +29,7 @@ async function loadAllFiles(arkEtfFundUrlMap) {
         if (!fs.existsSync(dateStr)){
             fs.mkdirSync(dateStr);
         }
-        const pdfFileName = './' + dateStr + '/' + etfName + '.pdf';
+        const pdfFileName = dir +'/' + dateStr + '/' + etfName + '.pdf';
         await downloadPDF(pdfFileURL, pdfFileName);
         const pdfTable = await asyncPdfTableExtractor(pdfFileName);
         const result = parseTableData(etfName, pdfTable);

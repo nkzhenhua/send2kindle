@@ -8,9 +8,10 @@ const arkEtfFundUrlMap = {
     ARKG: 'https://ark-funds.com/wp-content/fundsiteliterature/holdings/ARK_GENOMIC_REVOLUTION_MULTISECTOR_ETF_ARKG_HOLDINGS.pdf'
 }
 
-async function main(){
-    await loadAllFiles(arkEtfFundUrlMap);
+async function main(args){
+    await loadAllFiles(arkEtfFundUrlMap, args[0]);
 }
 
-main();
+var myArgs = process.argv.slice(2);
+main(myArgs);
 
