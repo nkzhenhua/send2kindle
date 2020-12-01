@@ -25,7 +25,7 @@ async function loadAllFiles(arkEtfFundUrlMap, dir) {
     for (const [etfName, pdfFileURL] of Object.entries(arkEtfFundUrlMap)) {
         console.log(etfName, pdfFileURL);
         const cur = new Date(Date.now());
-        const dateStr = cur.getFullYear() + '-' + cur.getMonth() + '-' + cur.getDay();
+        const dateStr = cur.getFullYear() + '-' + cur.getMonth() + '-' + cur.getDate();
         const dirPath = dir + '/' + dateStr;
         if (! fs.existsSync(dirPath)) {
             fs.mkdirSync(dirPath);
