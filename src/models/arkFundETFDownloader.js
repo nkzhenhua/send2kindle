@@ -25,7 +25,9 @@ async function loadAllFiles(arkEtfFundUrlMap, dir) {
     for (const [etfName, pdfFileURL] of Object.entries(arkEtfFundUrlMap)) {
         console.log(etfName, pdfFileURL);
         const cur = new Date(Date.now());
-        const dateStr = cur.getFullYear() + '-' + cur.getMonth() + '-' + cur.getDate();
+        const dateStr = cur.getFullYear() + '-' + (
+            1 + cur.getMonth()
+        ) + '-' + cur.getDate();
         const dirPath = dir + '/' + dateStr;
         if (! fs.existsSync(dirPath)) {
             fs.mkdirSync(dirPath);
@@ -35,11 +37,7 @@ async function loadAllFiles(arkEtfFundUrlMap, dir) {
         const pdfTable = await asyncPdfTableExtractor(pdfFileName);
         const result = parseTableData(etfName, pdfTable);
         const affectedRows = await upsertEtfData(result);
-        console.log({
-            event: 'update',
-            affectedRows
-        })
-        
+        console.log({event: 'update', affectedRows});
     }
     return pdfFiles;
 
