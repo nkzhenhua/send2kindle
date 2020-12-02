@@ -21,7 +21,6 @@ async function asyncPdfTableExtractor(pdfFileName) {
 }
 
 async function loadAllFiles(arkEtfFundUrlMap, dir) {
-    const pdfFiles = [];
     for (const [etfName, pdfFileURL] of Object.entries(arkEtfFundUrlMap)) {
         console.log(etfName, pdfFileURL);
         const cur = new Date(Date.now());
@@ -35,13 +34,20 @@ async function loadAllFiles(arkEtfFundUrlMap, dir) {
         const pdfFileName = dirPath + '/' + etfName + '.pdf';
         await downloadPDF(pdfFileURL, pdfFileName);
         const pdfTable = await asyncPdfTableExtractor(pdfFileName);
-        const result = parseTableData(etfName, pdfTable);
+        const result = parseTableData(etfName.toUpperCase(), pdfTable);
         console.log(result);
         const affectedRows = await upsertEtfData(result);
         console.log({event: 'update', dateStr, affectedRows});
     }
-    return pdfFiles;
+}
 
+async function loadFromFile(etfName, filePath) {
+        console.log(etfName, filePath);
+        const pdfTable = await asyncPdfTableExtractor(filePath);
+        const result = parseTableData(etfName.toUpperCase(), pdfTable);
+        console.log(result);
+        const affectedRows = await upsertEtfData(result);
+        console.log({event: 'update', affectedRows});
 }
 
 /**
@@ -84,5 +90,6 @@ async function downloadPDF(pdfURL, outputFilename) {
 }
 
 module.exports = {
-    loadAllFiles
+    loadAllFiles,
+    loadFromFile
 }
