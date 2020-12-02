@@ -36,8 +36,9 @@ async function loadAllFiles(arkEtfFundUrlMap, dir) {
         await downloadPDF(pdfFileURL, pdfFileName);
         const pdfTable = await asyncPdfTableExtractor(pdfFileName);
         const result = parseTableData(etfName, pdfTable);
+        console.log(result);
         const affectedRows = await upsertEtfData(result);
-        console.log({event: 'update', affectedRows});
+        console.log({event: 'update', dateStr, affectedRows});
     }
     return pdfFiles;
 

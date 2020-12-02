@@ -6,12 +6,12 @@ const createTableSql = `CREATE TABLE IF NOT EXISTS ark_etf_daily_snapshot(
     etf_name VARCHAR(50) NOT NULL,
     holding_date DATE,
     company_name VARCHAR(256) NOT NULL,
-    ticker VARCHAR(30) NOT NULL,
+    ticker VARCHAR(30),
     cusip VARCHAR(50) NOT NULL,
     shares INT,
     market_value DOUBLE,
     weight_in_etf FLOAT,
-    PRIMARY KEY (etf_name, holding_date, ticker)
+    PRIMARY KEY (etf_name, holding_date, ticker, cusip)
     );`;
 */
 
