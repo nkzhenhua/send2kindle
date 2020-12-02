@@ -5,7 +5,7 @@ const arkEtfFundUrlMap = {
 }
 describe('download ark etf daily snapshot', () => {
     it('download pdf files', async (done) => {
-        await loadAllFiles(arkEtfFundUrlMap, '.');
+        await loadAllFiles(arkEtfFundUrlMap, './');
         done();
     }, 100000);
 });

@@ -60,7 +60,7 @@ function parseTableData(etfName, jsonString) {
     // shift out header: seq, company, ticker, cusip, shares, marketValue, weight
     tableData.shift();
     const data = [];
-    for (var row = 0; row < tableData[row].length; row++) {
+    for (var row = 0; row < tableData.length; row++) {
         const stock = {
             etf_name: etfName,
             holding_date: etfDate,
