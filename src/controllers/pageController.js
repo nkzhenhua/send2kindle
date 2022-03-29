@@ -33,7 +33,13 @@ async function home(req, res) {
     res.send("welcome to send2kindle!")
 };
 
+async function echo(req, res) {
+    res.status(200);
+    res.send(req.url);
+};
+
 module.exports = {
     sendLinkToKindle,
-    home
+    home,
+    echo
 }

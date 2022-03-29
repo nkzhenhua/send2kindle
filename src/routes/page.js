@@ -8,5 +8,6 @@ var arkFundLoadController = require('../controllers/arkFundLoadController')
 router.post('/crawlArkETFData', arkFundLoadController.loadArkFundsFiles)
 router.post('/sendToKindle', pageController.sendLinkToKindle)
 router.get('/', pageController.home)
+router.get('/echo/*', pageController.echo)
 
 module.exports = router;
